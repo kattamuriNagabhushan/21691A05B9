@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from "dotenv"
+import authRoutes from "./routes/auth.route.js"
 
 dotenv.config();
 
@@ -12,6 +13,8 @@ app.use(express.json());
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
+
+app.use("/api/auth" , authRoutes)
 
 app.post("/test/register",(req , res)=>{
     const [companyName , ownerName , rollNo , ownerEmail , accessCode] = req.body 
@@ -29,7 +32,7 @@ app.post("/test/register",(req , res)=>{
     }
 
     return res.status(200).json({
-        
+
     })
 
 })
